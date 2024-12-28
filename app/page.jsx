@@ -7,11 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import WorldMap from "@/components/ui/world-map";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 const container = {
   hidden: { opacity: 0 },
@@ -92,68 +92,70 @@ export default function Page() {
   ];
 
   return (
-    <div>
-      <div className=" py-40 dark:bg-black bg-white w-full">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="font-bold text-xl md:text-4xl dark:text-white text-black">
+    <div className="bg-gradient-to-b from-primary/10 via-primary/10 to-transparent">
+      <div className="py-20 w-full">
+        <div className="max-w-7xl mx-auto text-center px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="font-bold text-3xl md:text-5xl text-foreground mb-6"
+          >
             Remote{" "}
-            <span className="text-neutral-400">
-              {"Connectivity".split("").map((word, idx) => (
-                <motion.span
-                  key={idx}
-                  className="inline-block"
-                  initial={{ x: -10, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.04 }}
-                >
-                  {word}
-                </motion.span>
-              ))}
+            <span className="bg-gradient-to-r from-blue-400 to-purple-600 text-transparent bg-clip-text">
+              Connectivity
             </span>
-          </p>
-          <p className="text-sm md:text-lg text-neutral-500 max-w-2xl mx-auto py-4">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm md:text-lg text-muted-foreground max-w-2xl mx-auto mb-12"
+          >
             Break free from traditional boundaries. Work from anywhere, at the
             comfort of your own studio apartment. Perfect for Nomads and
             Travellers.
-          </p>
+          </motion.p>
         </div>
-        <WorldMap
-          dots={[
-            {
-              start: {
-                lat: 64.2008,
-                lng: -149.4937,
-              }, // Alaska (Fairbanks)
-              end: {
-                lat: 34.0522,
-                lng: -118.2437,
-              }, // Los Angeles
-            },
-            {
-              start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
-              end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-            },
-            {
-              start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-              end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
-            },
-            {
-              start: { lat: 51.5074, lng: -0.1278 }, // London
-              end: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            },
-            {
-              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-              end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
-            },
-            {
-              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-              end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
-            },
-          ]}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="max-w-5xl mx-auto px-4"
+        >
+          <WorldMap
+            dots={[
+              {
+                start: { lat: 64.2008, lng: -149.4937 },
+                end: { lat: 34.0522, lng: -118.2437 },
+              },
+              {
+                start: { lat: 64.2008, lng: -149.4937 },
+                end: { lat: -15.7975, lng: -47.8919 },
+              },
+              {
+                start: { lat: -15.7975, lng: -47.8919 },
+                end: { lat: 38.7223, lng: -9.1393 },
+              },
+              {
+                start: { lat: 51.5074, lng: -0.1278 },
+                end: { lat: 28.6139, lng: 77.209 },
+              },
+              {
+                start: { lat: 28.6139, lng: 77.209 },
+                end: { lat: 43.1332, lng: 131.9113 },
+              },
+              {
+                start: { lat: 28.6139, lng: 77.209 },
+                end: { lat: -1.2921, lng: 36.8219 },
+              },
+            ]}
+            lineColor="white"
+          />
+        </motion.div>
       </div>
-      <div className="container min-h-screen py-20 flex flex-col items-center justify-center text-center bg-background relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-purple-500/10 to-transparent pointer-events-none" />
+      <div className="container min-h-screen py-20 flex flex-col items-center justify-center text-center bg-background/50 backdrop-blur-sm relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/10 to-transparent pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
